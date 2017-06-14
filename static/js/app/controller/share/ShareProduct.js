@@ -57,9 +57,9 @@ define([
 				var systemCode = res.data.systemCode;
 				var dslogan = res.data.slogan;
 				var dyunfei = yres.data.cvalue;
-				var dprice1 = res.data.price1;
-				var dprice2 = res.data.price2;
-				var dprice3 = res.data.price3;
+//				var dprice1 = res.data.price1;
+//				var dprice2 = res.data.price2;
+//				var dprice3 = res.data.price3;
 				
 				dtemplateCode = res.data.code;
 				dtprice = (res.data.toAmount/1000).toFixed(2);
@@ -75,27 +75,27 @@ define([
 					s+="<img src='"+PIC_PREFIX+strs[i]+"'/>";
 				}
 				
-				if(dprice1==0){
-					dprice1="";
-				}else if(dprice1!=0 && dprice2==0 && dprice3==0){
-					dprice1= dprice1/1000 +"人民币";
-				}else{
-					dprice1= dprice1/1000 +"人民币"+"+";
-				}
-				
-				if(dprice2==0){
-					dprice2="";
-				}else if(dprice2!=0 && dprice1==0 && dprice3==0){
-					dprice2= dprice2/1000 +"购物币";
-				}else{
-					dprice2= dprice2/1000 +"购物币"+"+";
-				}
-				
-				if(dprice3!=0){
-					dprice3= dprice3/1000 +"钱包币"
-				}else{
-					dprice3="";
-				}
+//				if(dprice1==0){
+//					dprice1="";
+//				}else if(dprice1!=0 && dprice2==0 && dprice3==0){
+//					dprice1= dprice1/1000 +"人民币";
+//				}else{
+//					dprice1= dprice1/1000 +"人民币"+"+";
+//				}
+//				
+//				if(dprice2==0){
+//					dprice2="";
+//				}else if(dprice2!=0 && dprice1==0 && dprice3==0){
+//					dprice2= dprice2/1000 +"购物币";
+//				}else{
+//					dprice2= dprice2/1000 +"购物币"+"+";
+//				}
+//				
+//				if(dprice3!=0){
+//					dprice3= dprice3/1000 +"钱包币"
+//				}else{
+//					dprice3="";
+//				}
 				
 				
 				$(".d-banner div img").attr("src",PIC_PREFIX+dadvpic+THUMBNAIL_SUFFIX)
@@ -103,7 +103,7 @@ define([
 				$(".d-slogan").html(dslogan);
 				$(".s-img").html(base.loadImg(s));
 				$(".s-con").html(res.data.description)
-				$(".s-price").html(dprice1+dprice2+dprice3)
+//				$(".s-price").html(dprice1+dprice2+dprice3)
 				$(".d-yunfei").html("运费："+dyunfei+"元");
 				
 			}else{
