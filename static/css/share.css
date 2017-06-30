@@ -429,7 +429,7 @@ samp,i,b,input{
 	width: 100%;
 	height: .8rem;
 	position: relative;
-	background-color: rgba(0,0,0,.3);
+	background-color: rgba(255,255,255,.9);
 	margin-bottom: .16rem;
 	border-radius: .1rem;
 	overflow: hidden;
@@ -458,7 +458,7 @@ samp,i,b,input{
 	background-color: transparent;
 }
 .bBtn{
-	width: 2.5rem;
+	width: 2.3rem;
 	height: .8rem;
 	line-height: .8rem;
 	border-radius: .1rem;
@@ -470,7 +470,6 @@ samp,i,b,input{
 }
 .bBtn-receive{
 	background-color: #FE4332;
-	margin-top: .6rem;
 }
 .bBtn-register{
 	background-color: #73cb98;
