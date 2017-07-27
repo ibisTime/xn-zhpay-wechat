@@ -20,10 +20,10 @@ define([
 	 
 	
 	function getUrl(t){
-		Ajax.get("615915",{
-			"type":"O",
+		Ajax.get("807715",{
+			"type":"2",
 		    "start": "1",
-		    "limit": "10",
+		    "limit": "20",
 			"systemCode":SYSTEM_CODE,
 			"companyCode":SYSTEM_CODE
 		}).then(function(res) {
