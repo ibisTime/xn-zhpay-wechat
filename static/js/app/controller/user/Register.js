@@ -52,19 +52,6 @@ define([
         	}
         })
         
-        $("#r-tel").blur(function(){
-        	var userTel = $(this).val();
-        	
-        	getProvingTel($(this));
-        	if(temp == "" || temp !=userTel){
-        		temp =userTel
-				captchaTime=60;
-				$("#rbtn-captcha").html("获取验证码");
-        	}else{
-        		temp = temp;
-        	}
-        })
-        
         //注册协议
         
         $(".r-popup-close").click(function(){

@@ -472,28 +472,6 @@ define([
         },
         //获取地址并跳转
         getLocation: function(){
-//      	$.when(
-//				Ajax.get("615917",{
-//					"key":"iosDownUrl",
-//					"systemCode":SYSTEM_CODE,
-//					"companyCode":SYSTEM_CODE
-//				}),
-//				Ajax.get("615917",{
-//				"key":"androidDownUrl",
-//				"systemCode":SYSTEM_CODE,
-//				"companyCode":SYSTEM_CODE})
-//			).then(function(res1,res2) {
-//		        if (res1.success && res2.success) {
-//		        	iosUrl = res1.data.cvalue;
-//					androidUrl = res2.data.cvalue;
-//					//跳转
-//					Base.getUserBrowser(iosUrl,androidUrl);
-//		        } else {
-//		        	Base.showMsg(res1.msg || res2.msg);
-//		        }
-//		    }, function() {
-//		        Base.showMsg("获取地址失败");
-//		    });
 			window.location.href="../share/share-qrcord.html";
         },
         loadImg: function (html) {
@@ -509,7 +487,6 @@ define([
                     } else {
                         img.addClass("wp100");
                     }
-                    // img.closest(".default-bg").removeClass("default-bg");
                     continue;
                 }
                 (function(img) {
