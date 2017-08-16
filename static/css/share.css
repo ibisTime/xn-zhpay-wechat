@@ -608,16 +608,6 @@ samp,i,b,input{
 	background-color: #ff4332;
 }
 
-
-.btn-md{
-	padding: 0 .3rem;
-	color: #fff;
-	background-color: #FF4332;
-	border-radius: 3px;
-	height: .58rem;
-	line-height: .58rem;
-	font-size: .28rem;
-}
 .store-txt{
 	height: .8rem;
 	position: relative;
@@ -647,7 +637,7 @@ samp,i,b,input{
 .icon-more img{
 	height: 100%;
 }
-.store-address,.store-tel{
+.store-address,.store-tel,.store-product{
 	width: 100%;
 	height: .8rem;
 	line-height: .8rem;
@@ -702,4 +692,29 @@ samp,i,b,input{
 }
 .sq-btn2{
 	right: .8rem;
+}
+.btnWrap{
+	width: 100%;
+	height: 60px;
+	background-color: #fff;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	z-index: 9999;
+	padding: .2rem .3rem;
+}
+
+.btn-md{
+	padding: 0 .3rem;
+	color: #fff;
+	background-color: #FF4332;
+	border-radius: 3px;
+	width: 3.30rem;
+	height: .8rem;
+	line-height: .8rem;
+	font-size: .28rem;
+	text-align: center;
+}
+.btn-zf{
+	background-color: #fdae03;
 }

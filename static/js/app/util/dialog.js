@@ -144,7 +144,7 @@ define(['jquery'], function($) {
             backdrop: null,
 
             /** 是否开启固定定位[*] */
-            fixed: false,
+            fixed: true,
 
             /** 判断对话框是否删除[*] */
             destroyed: true,
@@ -680,7 +680,7 @@ define(['jquery'], function($) {
         //align: 'bottom left',
 
         // 是否固定定位
-        //fixed: false,
+          fixed: true,
 
         // 对话框叠加高度值(重要：此值不能超过浏览器最大限制)
         //zIndex: 1024,

@@ -12,7 +12,7 @@ define([
         addListener();
         initSwiper();
 		
-		//参与
+		//买单
 		$("#btn-md").click(function(){
 			
 			base.confirm("请下载app")
@@ -21,6 +21,25 @@ define([
 				},function(){});
 		})
 		
+		//买单
+		$("#btn-zf").click(function(){
+			
+			base.confirm("请下载app")
+				.then(function(){
+					base.getLocation();//跳转
+				},function(){});
+		})
+		
+		
+		
+		//店铺商品
+		$("#storeProduct").click(function(){
+			
+			base.confirm("请下载app")
+				.then(function(){
+					base.getLocation();//跳转
+				},function(){});
+		})
 		
     }
 	
@@ -56,6 +75,7 @@ define([
     			
     			$(".d-banner div img").attr("src",PIC_PREFIX+dadvpic+THUMBNAIL_SUFFIX)
     			$(".store-name").html(res.data.name);
+    			$(".store-slogan").html(res.data.slogan);
     			$(".store-address").html(daddress);
     			$(".store-tel").html(res.data.bookMobile);
 				$(".s-img").html(base.loadImg(s));
