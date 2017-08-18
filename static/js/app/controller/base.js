@@ -443,7 +443,8 @@ define([
 
         },
         //判断终端
-        getUserBrowser:function(iosUrl,androidUrl){
+        getUserBrowser:function(type){
+        	var typeData;
         	var browser = {
                 versions: function() {
                     var u = navigator.userAgent, app = navigator.appVersion;
@@ -464,11 +465,46 @@ define([
             }
  
             if (browser.versions.ios || browser.versions.iPhone || browser.versions.iPad) {//ios
-                window.location.href= iosUrl;
+            	if(type=='C'){
+            		typeData='ios_c'
+            	}else if(type=='B'){
+            		typeData='ios_b'
+            	}
+            }else if (browser.versions.android) {//android
+            	
+            	if(type=='C'){
+            		typeData='android_c'
+            	}else if(type=='B'){
+            		typeData='android_b'
+            	}
             }
-            else if (browser.versions.android) {//android
-                window.location.href= androidUrl;
-            }
+           	
+           	Ajax.get("807715",{
+           		type: typeData,
+			    "start": "1",
+			    "limit": "100",
+				"systemCode":SYSTEM_CODE,
+				"companyCode":SYSTEM_CODE
+			}).then(function(res) {
+		        if (res.success) {
+		        	updateUrl = res.data.list;
+		        	
+		        	updateUrl.forEach(function(v, i){
+		        		if(v.ckey=='downloadUrl'){
+		        			
+                			window.location.href= v.cvalue;
+		        		}
+		        	})
+		        	
+		        } else {
+		        	Base.showMsg(res.msg);
+		        }
+		    }, function() {
+		        Base.showMsg("获取下载地址失败");
+		    });
+            
+            
+            
         },
         //获取地址并跳转
         getLocation: function(){

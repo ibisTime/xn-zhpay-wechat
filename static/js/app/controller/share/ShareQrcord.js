@@ -9,11 +9,11 @@ define([
     
     function init() {
     	$(".sq-btn1").click(function(){
-    		getUrl("C");
+    		base.getUserBrowser("C");
     	})
     	
     	$(".sq-btn2").click(function(){
-    		getUrl("B");
+    		base.getUserBrowser("B");
     	})
     	
     }
@@ -21,9 +21,8 @@ define([
 	
 	function getUrl(t){
 		Ajax.get("807715",{
-			"type":"2",
 		    "start": "1",
-		    "limit": "20",
+		    "limit": "100",
 			"systemCode":SYSTEM_CODE,
 			"companyCode":SYSTEM_CODE
 		}).then(function(res) {
@@ -52,7 +51,7 @@ define([
 	        		
 	        	})
 	        	
-	        	base.getUserBrowser(iosUrl,androidUrl);//跳转
+//	        	base.getUserBrowser(iosUrl,androidUrl);//跳转
 	        	
 	        } else {
 	        	base.showMsg(res.msg);
