@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <link rel="import" href="../head.html?__inline">
+    <title>我的</title>
+</head>
+
+<body>
+	<div class="user-top wp100 bg_fff b_e_b plr3r">
+		<div class="photo fl"></div>
+		<div class="mobile fl"></div>
+		<div class="logout fr">退出</div>
+	</div>
+	<div class="user-list-wrap">
+        <div class="user-list-item b_e_b am-flexbox am-flexbox-justify-between">
+            <div class="user-list-item-con" id="buyQBB">
+                <span>购买钱包币</span>
+            </div>
+            <i class="right-arrow"></i>
+        </div>
+        <div class="user-list-item b_e_b am-flexbox am-flexbox-justify-between">
+            <div class="user-list-item-con" id="withdraw">
+                <span>余额&nbsp;(<i id="LBBAmount"></i>)</span>
+                <samp>提现</samp>
+            </div>
+            <i class="right-arrow"></i>
+        </div>
+        <div class="user-list-item b_e_b am-flexbox am-flexbox-justify-between">
+            <a class="user-list-item-con">
+                <span>幸运数字</span>
+                <samp>查看</samp>
+            </a>
+            <i class="right-arrow"></i>
+        </div>
+   </div>
+	
+    <link rel="import" href="../footer.html?__inline">
+    <script data-loader>
+        require(['app/controller/user/User']);
+    </script>
+</body>
+
+</html>

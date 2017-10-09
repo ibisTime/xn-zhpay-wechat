@@ -1,4 +1,4 @@
-html,body{font-size:100px;}
+html,body{font-size:50px;}
 body{
 	margin: 0 auto;
 	color: #484848;
@@ -6,7 +6,7 @@ body{
 	line-height: inherit;
 }
 div{
-	font-size: .24rem;
+	font-size: .26rem;
 }
 samp,i,b,input{
 	font-family: "microsoft yahei","microsoft sans serif";
@@ -37,7 +37,20 @@ samp,i,b,input{
 	position: relative;
 	z-index: 9;
 }
-
+.b_e_b{
+	border-bottom: 1px solid #eee;
+}
+label.error {
+  position: absolute;
+  right: 0.3rem;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+     -moz-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+          transform: translateY(-50%);
+  font-size: 0.28rem;
+  color: #FE4332;
+}
 /*夺宝详情*/
 .header{
 	height: .9rem;
@@ -717,4 +730,329 @@ samp,i,b,input{
 }
 .btn-zf{
 	background-color: #fdae03;
+}
+
+
+.l-wrap{
+	margin-top: 2.5rem;
+}
+.loading-item {
+  height: 0.8rem;
+  line-height: 0.8rem;
+  text-align: center;
+}
+
+.loading-item span {
+  display: inline-block;
+  margin-left: 0.1rem;
+  vertical-align: middle;
+}
+
+.global-loading-icon1 {
+  background: url("/static/images/loading.png") no-repeat;
+  -webkit-animation: loadingCircle 1.2s infinite linear;
+     -moz-animation: loadingCircle 1.2s infinite linear;
+          animation: loadingCircle 1.2s infinite linear;
+  display: inline-block;
+  width: 0.4rem;
+  height: 0.4rem;
+  -webkit-background-size: 0.4rem 0.4rem;
+          background-size: 0.4rem;
+  vertical-align: middle;
+}
+
+.am-button {
+  display: block;
+  outline: 0 none;
+  -webkit-appearance: none;
+  -webkit-box-sizing: border-box;
+  padding: 0;
+  text-align: center;
+  font-size: 0.36rem;
+  height: 0.8rem;
+  line-height: 0.8rem;
+  -webkit-border-top-left-radius: 0.1rem;
+  border-top-left-radius: 0.1rem;
+  -webkit-border-top-right-radius: 0.1rem;
+  border-top-right-radius: 0.1rem;
+  -webkit-border-bottom-left-radius: 0.1rem;
+  border-bottom-left-radius: 0.1rem;
+  -webkit-border-bottom-right-radius: 0.1rem;
+  border-bottom-right-radius: 0.1rem;
+  -webkit-background-clip: padding-box;
+  color: #000;
+  background-color: #fff;
+}
+.am-button-red {
+  color: #fff;
+  background-color: #ff5000;
+}
+.am-button-primary {
+  color: #fff;
+  background-color: #FE4332;
+}
+
+.am-whitespace-sm {
+  height: 0.2rem;
+}
+
+.bank-wrapper {
+  padding: 0.2rem 0.3rem;
+}
+
+.bank-wrapper li {
+  padding: 0.6rem 0.4rem;
+  margin-bottom: 0.2rem;
+  -webkit-border-radius: 0.2rem;
+          border-radius: 0.2rem;
+  color: #fff;
+  background: #e63e33;
+  background: -moz-linear-gradient(left, #e63e33, #e56561);
+  background: -webkit-linear-gradient(left, #e63e33, #e56561);
+  background: -o-linear-gradient(left, #e63e33, #e56561);
+}
+
+.bank-wrapper li .bank-icon {
+  display: inline-block;
+  width: 0.74rem;
+  height: 0.74rem;
+  background-repeat: no-repeat;
+  -webkit-background-size: 0.74rem 0.74rem;
+          background-size: 0.74rem 0.74rem;
+  background-image: url(/static/images/bank@2x.png);
+}
+
+.bank-wrapper li .am-flexbox-item {
+  margin-left: 0.3rem;
+}
+
+.bank-wrapper li .am-flexbox-item h2 {
+  font-size: 0.32rem;
+}
+
+.bank-wrapper li .am-flexbox-item .type {
+  font-size: 0.28rem;
+}
+
+.bank-wrapper li .am-flexbox-item .bank-code {
+  margin-top: 0.3rem;
+  font-size: 0.4rem;
+}
+
+
+.withdraw-wrapper .withdraw-list {
+  background: #fff;
+}
+
+.withdraw-wrapper .withdraw-list .withdraw-item {
+  height: 1rem;
+  padding: 0 0.3rem;
+}
+
+.withdraw-wrapper .withdraw-list .withdraw-item span {
+  font-size: 0.3rem;
+}
+
+.withdraw-wrapper .withdraw-list .withdraw-item .bank-select,
+.withdraw-wrapper .withdraw-list .withdraw-item .withdraw-input {
+  width: 100%;
+  height: 100%;
+  font-size: 0.3rem;
+  background: transparent;
+}
+
+.withdraw-wrapper .withdraw-list .withdraw-item .bank-select {
+  padding-left: 0.72rem;
+  color: #333;
+}
+
+.withdraw-wrapper .withdraw-list .withdraw-item .withdraw-input {
+  padding-left: 0.9rem;
+  color: #999;
+}
+
+.withdraw-wrapper .withdraw-list .withdraw-item .over-select {
+  position: absolute;
+  left: 1rem;
+  top: 0.03rem;
+  width: 100%;
+}
+
+.withdraw-wrapper .remain {
+  padding: 0.3rem 0 0.22rem;
+  font-size: 0.3rem;
+  color: #999;
+}
+
+.withdraw-wrapper .fee {
+  padding: 0.1rem 0 0.22rem;
+  font-size: 0.26rem;
+  color: #FE4332;
+}
+
+.withdraw-wrapper .fee span {
+  padding-left: 0.3rem;
+}
+
+.withdraw-wrapper .withdraw-rules {
+  margin-top: 0.4rem;
+  padding: 0 0.3rem;
+}
+
+.withdraw-wrapper .withdraw-rules p {
+  font-size: 0.28rem;
+  line-height: 1.7;
+  color: #FE4332;
+}
+.withdraw-wrapper .recharge-btn {
+  margin-top: .8rem;
+  padding: 0 0.3rem;
+}
+
+.withdraw-wrapper .recharge-btn .am-button {
+  width: 100%;
+  height: 0.9rem;
+  line-height: 0.9rem;
+  font-size: 0.36rem;
+  color: #fff;
+}
+
+.withdraw-wrapper .recharge-top {
+  position: relative;
+  padding: 0 0.3rem 0.08rem;
+  background: #fff;
+}
+
+.withdraw-wrapper .recharge-top .title {
+  padding: 0.36rem 0;
+  font-size: 0.3rem;
+}
+
+.withdraw-wrapper .recharge-top .amount {
+  position: relative;
+  padding: 0.22rem 0;
+  border-bottom: 1px solid #eee;
+}
+
+.withdraw-wrapper .recharge-top .amount input,
+.withdraw-wrapper .recharge-top .amount span {
+  font-size: 0.6rem;
+  color: #333;
+}
+
+.withdraw-wrapper .recharge-top .amount input {
+  padding-left: 0.1rem;
+}
+
+.withdraw-txt{
+	padding: 0 .3rem;
+	font-size: .28rem;
+	line-height: .6rem;
+	margin-top: .2rem;
+}
+
+.user-top{
+	height: 2rem;
+	overflow: hidden;
+}
+.user-top .logout{
+	font-size: .28rem;
+	color: #999;
+	line-height: 2rem;
+}
+.user-top .photo{
+	width: 1.3rem;
+	height: 1.3rem;
+	margin-top: .35rem;
+	border-radius: 50%;
+	overflow: hidden;
+}
+.user-top .photo div{
+	width: 100%;
+	height: 100%;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+}
+.user-top .mobile{
+	font-size: .32rem;
+	color: #484848;
+	line-height: 2rem;
+	margin-left: .3rem;
+}
+
+.user-list-wrap .user-list-item {
+	height: 1rem;
+	overflow: hidden;
+	padding-left: 0.3rem;
+	padding-right: 0.3rem;
+	position: relative;
+	background: #fff;
+}
+.user-list-wrap .user-list-item .user-list-item-con{
+	width: 100%;
+	padding-right: .18rem;
+}
+.user-list-wrap .user-list-item span{
+	float: left;
+	font-size: .32rem;
+}
+.user-list-wrap .user-list-item samp{
+	float: right;
+	font-size: .32rem;
+	color: #FE4332;
+}
+.user-list-wrap .user-list-item span i{
+	font-size: .32rem;
+	font-style: normal;
+}
+.right-arrow {
+	width: 0.15rem;
+	height: 100%;
+	display: inline-block;
+	background: url("/static/images/icon-more.png") no-repeat center;
+	background-size: contain;	
+}
+
+.account-flow-list .flow-item {
+  border-bottom: 1px solid #eee;
+  padding: 0.27rem 0.3rem;
+  height: 1.5rem;
+}
+
+.account-flow-list .flow-item:last-child {
+  border-bottom: none;
+}
+.account-flow-list .flow-item .flow-datetime .f-date {
+  font-size: 0.32rem;
+}
+
+.account-flow-list .flow-item .flow-datetime .f-time {
+  font-size: 0.24rem;
+  color: #999;
+}
+.account-flow-list .flow-item .flow-datetime{
+	width: .8rem;
+	height: .8rem;
+}
+.account-flow-list .flow-item .flow-content{
+	width: 6rem;
+	padding-left: .3rem;
+}
+.account-flow-list .flow-item .flow-content .f-transAmount {
+	display: inline-block;
+	float: left;
+	font-size: 0.38rem;
+	line-height: .8rem;
+}
+
+.account-flow-list .flow-item .flow-content .f-transAmount.f-trans-blue {
+  color: #67c3fd;
+}
+
+.account-flow-list .flow-item .flow-content .flow-remark {
+	display: inline-block;
+	float: right;
+	font-size: 0.32rem;
+	line-height: .8rem;
 }

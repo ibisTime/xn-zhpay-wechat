@@ -1,0 +1,47 @@
+<div id="addOrEditBankCardContainer" class="right-left-cont">
+    <div class="right-left-cont-title">
+        <div class="right-left-cont-back"></div>
+        <div class="right-left-cont-title-name">绑定银行卡</div>
+    </div>
+    <form id="addOrEditBankCardForm" class="form-wrapper">
+    	<input id="userId" name="userId" type="hidden" />
+        <input name="type" id="type" type="hidden" value="C">
+        <input name="currency" id="currency" type="hidden" value="CNY">
+        <input name="bankCode" id="bankCode" type="hidden">
+        <div class="form-item  ">
+            <div class="am-flexbox">
+                <span class="item-title">持卡人</span>
+                <input type="text" placeholder="请输入真实姓名" id="realName" name="realName" class="input-item"/>
+            </div>
+        </div>
+        <div class="form-item  ">
+            <div class="am-flexbox">
+                <span class="item-title">银行类型</span>
+                <select id="bankName" name="bankName" class="input-item"></select>
+            </div>
+        </div>
+        <!--<div class="form-item  ">
+            <div class="am-flexbox">
+                <span class="item-title">开户行</span>
+                <input type="text" placeholder="请输入开户行" id="payCardInfo" name="payCardInfo" class="input-item"/>
+            </div>
+        </div>-->
+        <div class="form-item  ">
+            <div class="am-flexbox">
+                <span class="item-title">银行卡号</span>
+                <input type="number" pattern="[0-9]*" placeholder="请输入银行卡号" id="bankcardNumber" name="bankcardNumber" class="input-item"/>
+            </div>
+        </div>
+        <div class="form-item  ">
+            <div class="am-flexbox">
+                <span class="item-title">预留手机</span>
+                <input type="tel" placeholder="请输入手机号" id="bindMobile" name="bindMobile" class="input-item"/>
+            </div>
+        </div>
+    </form>
+    <div class="primary-wrap">
+        <a id="addOrEditBankCardBtn" class="am-button am-button-primary">
+            <span>确定</span>
+        </a>
+    </div>
+</div>

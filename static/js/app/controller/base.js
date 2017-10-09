@@ -77,8 +77,24 @@ define([
         formatDate: function(date, format) {
             return date ? new Date(date).format(format) : "--";
         },
-        getImg: function(pic) {
-            return pic ? (PIC_PREFIX + pic + THUMBNAIL_SUFFIX) : "";
+        getImg: function(pic,suffix) {
+        	if (!pic) {
+                return "";
+            }
+            if (pic) {
+                pic = pic.split(/\|\|/)[0];
+            }
+            if (!/^http/i.test(pic)) {
+                suffix = suffix || THUMBNAIL_SUFFIX;
+                pic = PIC_PREFIX + pic + suffix;
+            }
+            return pic
+        },
+        getAvatar: function(pic) {
+            if(!pic) {
+                return "/static/images/avatar.png";
+            }
+            return Base.getImg(pic, "?imageMogr2/auto-orient/interlace/1");
         },
         getUrlParam: function(name, locat) {
             var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
@@ -264,55 +280,6 @@ define([
                     initFun();
                 }
 	    },
-//      initLocation: function initLocation(initFun, errFun) {
-//          var province = sessionStorage.getItem("province") || "",
-//              city = sessionStorage.getItem("city") || "",
-//              area = sessionStorage.getItem("area") || "",
-//              longitude = sessionStorage.getItem("longitude", longitude),
-//              latitude = sessionStorage.getItem("latitude", latitude);
-//          loading.createLoading("定位中...");
-//          if (!province) {
-//              var geolocation = new BMap.Geolocation({timeout: 5000});
-//              geolocation.getCurrentPosition(function(r) {
-//                  if (this.getStatus() == BMAP_STATUS_SUCCESS) {
-//                  	if(r.address.province && r.address.city && r.address.district){
-//                  		province = r.address.province;
-//                          city = r.address.city;
-//                          area = r.address.district;
-//                  	}else{
-//                  		errFun();
-//                  	}
-////                      var geoc = new BMap.Geocoder();
-////                      geoc.getLocation(r.point, function(rs){
-////                          var addComp = rs.addressComponents;
-////                          province = addComp.province || "";
-////                          city = addComp.city || "";
-////                          area = addComp.district || "";
-////                          longitude = r.point.lng;
-////                          latitude = r.point.lat;
-////                          if(province == city){
-////                              city = area;
-////                              area = "";
-////                          }
-//                          //百度地图的城市名称可能和oss存的名称不同，需要匹配出相同的名称
-//                          Base.getRealLocation(initFun, province, city, area, longitude, latitude, errFun);
-////                      });  
-//                  } else {
-//                      loading.hideLoading();
-//                      Base.showMsg("定位失败");
-//                      errFun && errFun();
-//                  }
-//              },errFun);
-//          }else{
-//              Base.getAddress()
-//                  .then(function(data) {
-//                      var citylist = data.citylist;
-//                      loading.hideLoading();
-//                      initFun(citylist);
-//                  });
-//          }
-//      },
-        
         //获取地址json
         getAddress: function() {
             var addr = localStorage.getItem("addr");
@@ -392,11 +359,11 @@ define([
         isLogin: function() {
             return !!sessionStorage.getItem("user");
         },
-        getUser: function(refresh) {
-            return Ajax.get("805043", {}, !refresh)
+        getUserLogin: function(param,refresh) {
+            return Ajax.get("805043", param, !refresh)
                 .then(function(res) {
                     if (res.success) {
-                        Base.setSessionUserInfo(res.data);
+                        Base.setSessionUser(res.data);
                     }
                     return res;
                 }, function(res) {
@@ -407,8 +374,8 @@ define([
             return sessionStorage.getItem("user") || "";
         },
         setSessionUser: function(res) {
-            sessionStorage.setItem("user", res.data.userId);
-            sessionStorage.setItem("tk", res.data.token);
+            sessionStorage.setItem("user", res.userId);
+            sessionStorage.setItem("tk", res.token);
         },
         //清除sessionStorage中和用户相关的数据
         clearSessionUser: function() {
@@ -509,6 +476,14 @@ define([
         //获取地址并跳转
         getLocation: function(){
 			window.location.href="../share/share-qrcord.html";
+        },
+        // 显示loading
+        showLoading: function(msg, hasBottom) {
+            loading.createLoading(msg, hasBottom);
+        },
+        // 隐藏loading
+        hideLoading: function() {
+            loading.hideLoading();
         },
         loadImg: function (html) {
             var wrap = $(html);

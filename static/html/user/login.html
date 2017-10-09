@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <link rel="import" href="../head.html?__inline">
+    <title>登录</title>
+</head>
+
+<body class="hp100 bg-r">
+	<div class="r-wrap l-wrap">
+		<div class="r-telWrap">
+			<div class="r-icon"><img src="../../images/icon-tel.png"></div>
+			<input class="r-style r-input" type="tel" id="l-tel" />
+			<div class="r-style r-input-placeholder" data-txt="请输入手机号码">请输入手机号码</div>
+		</div>
+		
+		<div class="r-telWrap">
+			<div class="r-icon"><img src="../../images/icon-pwd.png"></div>
+			<input class="r-style r-input" type="password" id="l-pwd" />
+			<div class="r-style r-input-placeholder" data-txt="请输入密码">请输入密码</div>
+		</div>
+		
+		<input type="button" class="rbtn-sub" id="lbtn-sub" value="登录" />
+	</div>
+	
+    <link rel="import" href="../footer.html?__inline">
+    <script data-loader>
+        require(['app/controller/user/Login']);
+    </script>
+</body>
+
+</html>

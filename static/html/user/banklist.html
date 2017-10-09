@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <link rel="import" href="../head.html?__inline">
+    <title>我的银行卡</title>
+    <!--SCRIPT_PLACEHOLDER-->
+</head>
+
+<body>
+    <ul class="bank-wrapper" id="content"></ul>
+    
+	<div style="height: 0.84rem;"></div>
+	<footer class="fixft ptb20lr30">
+		<div class="am-button am-button-red hidden" id="addBtn">添加</div>
+	</footer>
+    <div id="loadingWrap" class="loading-item hidden"><i class="global-loading-icon1"></i><span>加载中...</span></div>
+    <link rel="import" href="../footer.html?__inline">
+    <script>
+        require(['app/controller/user/BankList']);
+    </script>
+</body>
+
+</html>
