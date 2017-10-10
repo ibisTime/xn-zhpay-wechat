@@ -33,7 +33,7 @@ define([
                 base.showLoading()
                 if (res.success) {
                 	base.hideLoading()
-                	location.href = './user.html'
+                	location.href = '../user/user.html'
                 }else{
                 	base.hideLoading();
                 	base.showMsg(res.msg)
