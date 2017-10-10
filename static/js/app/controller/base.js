@@ -407,7 +407,6 @@ define([
                 });
                 d.showModal();
             }));
-
         },
         //判断终端
         getUserBrowser:function(type){

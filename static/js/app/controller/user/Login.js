@@ -30,9 +30,13 @@ define([
         		systemCode: SYSTEM_CODE
         	}
         	base.getUserLogin(param).then(function(res){
+                base.showLoading()
                 if (res.success) {
-                	base.showLoading()
+                	base.hideLoading()
                 	location.href = './user.html'
+                }else{
+                	base.hideLoading();
+                	base.showMsg(res.msg)
                 }
         	});
         })

@@ -9,7 +9,7 @@ define([
         return !!$(".loading-module-wrap").length;
     }
     return {
-        createLoading: function(msg){
+        createLoading: function(msg, hasBottom){
             msg = msg || "加载中...";
             if(_hasLoading()){
                 $(".loading-module-wrap")
@@ -19,6 +19,9 @@ define([
                 var cont = $(tmpl);
                 cont.find(".loading-module-text").text(msg);
                 $("body").append(cont);
+            }
+            if(hasBottom){
+                $(".loading-module-wrap").addClass("loading-has-bottom");
             }
             return this;
         },

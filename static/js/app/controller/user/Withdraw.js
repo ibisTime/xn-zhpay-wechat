@@ -76,7 +76,7 @@ define([
     // 获取用户账户
     function getAccount() {
         return Ajax.get('802503',{userId: base.getUserId()})
-            .then((res) => {
+            .then(function(res) {
             	if(res.success){
             		var data = res.data
 		            data.forEach((account) => {
@@ -148,18 +148,20 @@ define([
         param.applyUser = base.getUserId()
         Ajax.post("802750", {
         	json:param
-        }).then(function() {
-            base.hideLoading();
-            base.showMsg("申请提交成功");
-            setTimeout(function() {
-            	
-//          	if(currencyType=='XJK'){
-//          		location.replace('./xjk-account.html');
-//          	}else{
-//              	location.replace('./rmb-account.html');
-//          	}
-            	
-            }, 700);
+        }).then(function(res) {
+        	if(res.success){
+        		base.hideLoading();
+	            base.showMsg("申请提交成功");
+	            setTimeout(function() {
+	            	
+	          		location.href='./user.html';
+	            	
+	            }, 700);
+        	}else{
+        		base.hideLoading();
+        		base.showMsg(res.msg,10000)
+        	}
+            
         });
     }
 });

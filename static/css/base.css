@@ -105,7 +105,7 @@ section {
 }
 
 body {
-    font-size: 1.2rem;
+    font-size: .26rem;
     position: relative;
     font-family: Microsoft YaHei, '宋体', Tahoma, Arial, sans-serif;
     color: #595959;
@@ -1799,3 +1799,4 @@ pl23{
 .right-left-cont .primary-wrap{
 	padding: 1rem 0;
 }
+

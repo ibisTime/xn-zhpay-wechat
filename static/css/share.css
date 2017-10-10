@@ -1,8 +1,6 @@
-html,body{font-size:50px;}
 body{
 	margin: 0 auto;
 	color: #484848;
-	font-size: .24rem;
 	line-height: inherit;
 }
 div{
@@ -499,11 +497,12 @@ label.error {
 	width: 100% !important;
 }
 .ui-dialog-body{
-	padding: .35rem 0 .2rem !important;
+	padding: .3rem 0 .2rem !important;
 }
 .ui-dialog-content{
 	line-height: .7rem;
 	font-size: .3rem;
+	padding: 0 .2rem;
 }
 .ui-dialog-button{
 	float: inherit !important;
@@ -768,9 +767,9 @@ label.error {
   -webkit-box-sizing: border-box;
   padding: 0;
   text-align: center;
-  font-size: 0.36rem;
-  height: 0.8rem;
-  line-height: 0.8rem;
+  font-size: 0.32rem;
+  height: 0.6rem;
+  line-height: 0.6rem;
   -webkit-border-top-left-radius: 0.1rem;
   border-top-left-radius: 0.1rem;
   -webkit-border-top-right-radius: 0.1rem;
@@ -782,6 +781,10 @@ label.error {
   -webkit-background-clip: padding-box;
   color: #000;
   background-color: #fff;
+}
+.am-button-cancel {
+  color: #999;
+  border: 1px solid #DDDDDD;
 }
 .am-button-red {
   color: #fff;
@@ -1017,7 +1020,7 @@ label.error {
 .account-flow-list .flow-item {
   border-bottom: 1px solid #eee;
   padding: 0.27rem 0.3rem;
-  height: 1.5rem;
+  height: 1.35rem;
 }
 
 .account-flow-list .flow-item:last-child {
@@ -1028,12 +1031,13 @@ label.error {
 }
 
 .account-flow-list .flow-item .flow-datetime .f-time {
-  font-size: 0.24rem;
+  font-size: 0.26rem;
   color: #999;
 }
 .account-flow-list .flow-item .flow-datetime{
-	width: .8rem;
-	height: .8rem;
+	width: .9rem;
+	height: .9rem;
+	text-align: center;
 }
 .account-flow-list .flow-item .flow-content{
 	width: 6rem;
@@ -1055,4 +1059,190 @@ label.error {
 	float: right;
 	font-size: 0.32rem;
 	line-height: .8rem;
+}
+.am-modal-mask {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  height: 100%;
+  z-index: 999;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.am-modal-wrap {
+  position: fixed;
+  overflow: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 100%;
+  z-index: 999;
+  -webkit-overflow-scrolling: touch;
+  outline: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: -moz-box;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  -moz-box-align: center;
+       align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  -moz-box-pack: center;
+       justify-content: center;
+}
+
+.am-modal {
+  position: relative;
+  width: 6.14rem;
+  height: auto;
+}
+
+.am-modal .am-modal-content {
+  position: relative;
+  background-color: #fff;
+  border: 0;
+  -webkit-background-clip: padding-box;
+          background-clip: padding-box;
+  text-align: center;
+  height: 100%;
+  overflow: hidden;
+  -webkit-border-radius: .2rem;
+          border-radius: .2rem;
+  height: auto;
+  padding-top: 0;
+}
+
+.am-modal .am-modal-header {
+  padding: .3rem .3rem .2rem;
+  font-size: .3rem;
+}
+
+.am-modal .am-modal-body {
+  font-size: .28rem;
+  height: 100%;
+  max-height: 4.6rem;
+  overflow-y: scroll;
+  padding: .1rem .4rem;
+  text-align: left;
+}
+
+.am-modal .am-modal-footer {
+  overflow: hidden;
+  padding: .4rem .58rem;
+}
+.am-modal .am-modal-footer .am-button{
+	display: inline-block;
+	width: 1.4rem;
+	font-size: .28rem;
+}
+.am-modal .am-modal-footer .am-button:first-child{
+	margin-right: 1rem;
+}
+.buy-dialog-content{
+	font-size: .3rem;
+}
+
+.luckyNumbers-list{
+	width: 100%;
+	overflow: hidden;
+	padding: .3rem .3rem;
+}
+.luckyNumbers-item{
+	width: 20%;
+	text-align: center;
+	float: left;
+	padding: .3rem 0;
+}
+.luckyNumbers-item .con{
+	display: inline-block;
+	width: .8rem;
+	height: .8rem;
+	line-height: .8rem;
+	border-radius: 50%;
+	font-size: .34rem;
+	color: #fff;
+	text-align: center;
+}
+.luckyNumbers-item.red .con{
+	background-color: #fd512f;
+}
+.luckyNumbers-item.blue .con{
+	background-color: #2fb2fb;
+}
+.luckyNumDetail-top{
+	padding: .32rem .3rem;
+}
+.luckyNumDetail-top .con div{
+	font-size: .28rem;
+	line-height: 1;
+}
+.luckyNumDetail-top .con:first-child{
+	margin-bottom: .3rem;
+}
+
+.luckyNumDetail-top .con .red{
+	color: #FE4332;
+}
+.no-data{
+	padding: .3rem 0;
+	text-align: center;
+	font-size: .28rem;
+}
+.luckyNumDetail-list .flow-item .flow-content .f-transAmount.f-trans-blue{
+	color: #FE4332;
+}
+.luckyNumDetail-list .flow-item .flow-content .flow-remark{
+	float: left;
+	margin-left: .4rem;
+}
+
+.lbBack-list{
+	padding: .2rem 0;
+}
+.lbBack-item{
+	width: 100%;
+	padding: .2rem .3rem .2rem 1.04rem;
+	position: relative;
+}
+.lbBack-item .icon{
+	width: .44rem;
+	height: 100%;
+	background-image: url("../images/信息@2x.png");
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: .44rem;
+	position: absolute;
+	top: 0;
+	left: .3rem;
+	z-index: 11;
+}
+.lbBack-item .wrap{
+	width: 6rem;
+	font-size: .28rem;
+	position: relative;
+	overflow: hidden;
+}
+.lbBack-item .line{
+	width: .02rem;
+	height: 100%;
+	background-color: #eee;
+	position: absolute;
+	bottom: 50%;
+	margin-bottom: .2rem;
+	left: .52rem;
+	z-index: 10;
+}
+.lbBack-item:first-child .line{
+	display: none;
+}
+.lbBack-item .wrap .time{
+	margin-bottom: .1rem;
 }

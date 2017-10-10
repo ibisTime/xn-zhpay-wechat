@@ -97,7 +97,9 @@ define([
 
     // 根据code获取银行卡详情
     function getBankCard(){
-        return AccountCtr.getBankCard(defaultOpt.code, true);
+        return Ajax.get('802017',{
+        	code:defaultOpt.code
+        });
     }
 
     // 获取银行select列表

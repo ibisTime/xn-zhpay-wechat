@@ -32,19 +32,23 @@ define([
     
     function getPageFlow() {
         return Ajax.get('802755',config).then(function(res) {
-        	var data = res.data
-            base.hideLoading();
-            var lists = data.list;
-            var totalCount = +data.totalCount;
-            if (totalCount <= config.limit || lists.length < config.limit) {
-                isEnd = true;
-            }
-            if(data.list.length) {
-                $("#content").append(buildHtml(data.list));
-            } else {
-                $("#content").html('<li class="no-data">暂无取现记录</li>')
-            }
-            canScrolling = true;
+			base.hideLoading()
+			if(res.success){
+	        	var data = res.data
+	            var lists = data.list;
+	            var totalCount = +data.totalCount;
+	            if (totalCount <= config.limit || lists.length < config.limit) {
+	                isEnd = true;
+	            }
+	            if(data.list.length) {
+	                $("#content").append(buildHtml(data.list));
+	            } else {
+	                $("#content").html('<li class="no-data">暂无取现记录</li>')
+	            }
+	            canScrolling = true;
+	        }else{
+				base.showMsg(res.msg)
+			}
         });
     }
     
@@ -54,7 +58,7 @@ define([
             var transAmount = +item.amount;
             transAmount = base.formatMoney(transAmount);
             var createDatetime = item.applyDatetime,
-                day = base.formatDate(createDatetime, "dd日"),
+                day = base.formatDate(createDatetime, "MM/dd"),
                 time = base.formatDate(createDatetime, "hh:mm");
 
             html += '<div class="flow-item">'

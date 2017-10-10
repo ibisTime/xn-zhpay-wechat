@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <link rel="import" href="../head.html?__inline">
+    <title>详情</title>
+    <!--SCRIPT_PLACEHOLDER-->
+</head>
+
+<body>
+	<div class="luckyNumDetail-top b_e_b bg_fff">
+		<div class="wp100 over-hide con">
+			<div class="fl">幸运数字：<samp class="red" id="luckyNumber"></samp></div>
+			<div class="fr">每月领取福利：<samp id="MonthlyBenefits"></samp></div>
+		</div>
+		<div class="wp100 over-hide con">
+			<div class="fl">大礼包：<samp class="red" id="dlb"></samp>个</div>
+			<div class="fr">小礼包：<samp class="red" id="xlb"></samp>个</div>
+		</div>
+	</div>
+	<div class="account-flow-list luckyNumDetail-list bg_fff" id="content">
+		
+	</div>
+	
+    <link rel="import" href="../footer.html?__inline">
+    <script data-loader>
+        require(['app/controller/luckyNumbers/LuckyNumberDetail']);
+    </script>
+</body>
+
+</html>
