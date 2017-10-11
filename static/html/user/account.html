@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <link rel="import" href="../head.html?__inline">
+    <title>余额</title>
+    <!--SCRIPT_PLACEHOLDER-->
+</head>
+
+<body>
+    <div class="account-wrap">
+        <div class="account-top fl">
+            <p class="amount-tip">余额</p>
+            <p class="remain-amount" id="amount">0.00</p>
+        </div>
+        <div class="fr account-btnWrap">
+            <button id="withdraw" class="am-button am-button-red">提现</button>
+        </div>
+    </div>
+    <div class="am-whitespace-sm"></div>
+    <div class="account-list" id="content"></div>
+    <link rel="import" href="../footer.html?__inline">
+    <script>
+        require(['app/controller/user/Account']);
+    </script>
+</body>
+
+</html>

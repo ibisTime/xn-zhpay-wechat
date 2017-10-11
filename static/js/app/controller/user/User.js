@@ -1,15 +1,13 @@
 define([
     'app/controller/base',
-    'app/util/ajax',
-    'app/module/setTradePwd'
-], function(base, Ajax, setTradePwd) {
-	var tradepwdFlag = 0;
-	var mobile;
+    'app/util/ajax'
+], function(base, Ajax) {
     var config = {
 	        start: 1,
 	        limit: 10,
     		companyCode: COMPANY_CODE,
-    		systemCode: SYSTEM_CODE
+    		systemCode: SYSTEM_CODE,
+    		toUser: base.getUserId()
 	    }, isEnd = false, canScrolling = false;
 	
 	var lbType = {
@@ -39,8 +37,6 @@ define([
     function getUserInfo(){
     	return Ajax.get('805056').then(function(res){
     		if(res.success){
-    			mobile = res.data.mobile
-    			tradepwdFlag = res.data.tradepwdFlag
     			$(".user-top .photo").html('<div style="background-image: url('+base.getAvatar(res.data.userExt?res.data.userExt.photo:'')+');"></div>')
     			$(".user-top .mobile").html(res.data.mobile)
     		}else{
@@ -87,7 +83,7 @@ define([
     
     //获取礼包返现
 	function getPageLbBack(){
-        return Ajax.get('808515',config).then(function(res) {
+        return Ajax.get('808515', config, false).then(function(res) {
 			base.hideLoading()
 			if(res.success){
 	        	var data = res.data
@@ -98,6 +94,12 @@ define([
 	            }
 	            if(data.list.length) {
 	                $("#content").append(buildHtml(data.list));
+                    isEnd && $("#content").append('<div class="no-data">已经全部加载完毕</div>')
+                    config.start++;
+	            } else if(config.start == 1) {
+                    $("#content").html('')
+                } else {
+	                $("#content").append('<div class="no-data">已经全部加载完毕</div>')
 	            }
 	            canScrolling = true;
 	        }else{
@@ -117,7 +119,7 @@ define([
 			if(item.type==3){
             	html += '<div class="con">您获得了由平台送出的'+lbType[item.type]+'一个，请注意查收。</div>'
             }else{
-            	html += '<div class="con">您获得了由幸运数字'+item.id+'送出的'+lbType[item.type]+'一个，请注意查收。</div>'
+            	html += '<div class="con">您获得了由幸运数字'+item.purchaseLbNumber+'送出的'+lbType[item.type]+'一个，请注意查收。</div>'
             }
 				html += '</div></div>';
         });
@@ -126,18 +128,14 @@ define([
     }
 	
 	function addListener(){
-		setTradePwd.addCont({
-			mobile:mobile,
-			successUrl:'./withdraw.html'
-		})
-		//提现
-		$("#withdraw").click(function(){
-			if(tradepwdFlag==0&&!tradepwdFlag){
-				setTradePwd.showCont()
-			}else{
-				location.href='./withdraw.html'
-			}
-		})
+		//下拉加载
+        $(window).off("scroll").on("scroll", function() {
+            if (canScrolling && !isEnd && ($(document).height() - $(window).height() - 10 <= $(document).scrollTop())) {
+                canScrolling = false;
+                base.showLoading();
+                getPageLbBack();
+            }
+        });
 		
 		//退出
 		$("#logout").click(function(){
@@ -162,5 +160,6 @@ define([
 		$(".dialog .confim").click(function(){
 			getBuyQBB();
 		})
+		
 	}
 });

@@ -28,9 +28,10 @@ define([
 	            }
 	            if(data.list.length) {
 	                $("#content").append(buildHtml(data.list));
-	            } else {
-	                $("#content").html('<li class="no-data">暂无幸运数字</li>')
-	            }
+                    config.start++;
+	            } else if(config.start == 1) {
+                    $("#content").html('<div class="no-data">暂无幸运数字</div>')
+                }
 	            canScrolling = true;
 			}else{
 				base.showMsg(res.msg)
@@ -54,6 +55,15 @@ define([
 	
 	function addListener(){
 		
+		//下拉加载
+        $(window).off("scroll").on("scroll", function() {
+            if (canScrolling && !isEnd && ($(document).height() - $(window).height() - 10 <= $(document).scrollTop())) {
+                canScrolling = false;
+                base.showLoading();
+                getLuckyNumbers();
+            }
+        });
+        
 	}
 	
 });

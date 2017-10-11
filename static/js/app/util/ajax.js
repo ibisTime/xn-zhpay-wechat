@@ -1,4 +1,7 @@
-define(["jquery"], function($) {
+define([
+	"jquery",
+    'app/util/dialog',
+], function($, dialog) {
     var cache = {};
 
     function getUrl(code) {
@@ -9,6 +12,19 @@ define(["jquery"], function($) {
         sessionStorage.removeItem("user"); //userId
         sessionStorage.removeItem("tk"); //token
     }
+    
+    function showMsg(msg, time) {
+        var d = dialog({
+            content: msg,
+            quickClose: true
+        });
+        d.show();
+        setTimeout(function() {
+            d.close().remove();
+        }, time || 1500);
+        return d;
+    }
+    
     return {
         get1: function(url, param, reload, sync) {
             if (typeof param == 'boolean' || typeof param == 'undefined') {
@@ -99,12 +115,20 @@ define(["jquery"], function($) {
             return cache[cache_url].then(function(res) {
                 if (res.errorCode == "4") {
                     clearSessionUser();
-                    // location.href = "../user/login.html?return=" + encodeURIComponent(location.pathname + location.search);
-                    // base.showMsg("登录超时");
+                	showMsg("登录超时");
+                	setTimeout(function() {
+                        location.replace("../user/login.html");
+                    }, 800);
+                }
+                if(res.errorInfo == 'token不能为空'){
+                	clearSessionUser();
+                	setTimeout(function() {
+                        location.replace("../user/login.html");
+                    }, 800);
                 }
                 var result = {};
                 res.errorCode == "0" ? (result.success = true, result.data = res.data) :
-                    (result.success = false, result.msg = res.errorInfo);
+                    (result.success = false, result.msg = res.errorInfo== 'token不能为空'? '登录失效' : res.errorInfo);
                 return result;
             }, function(obj, error, msg) {
                 console.log(msg);

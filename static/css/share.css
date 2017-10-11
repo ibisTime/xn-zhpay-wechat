@@ -42,6 +42,7 @@ label.error {
   position: absolute;
   right: 0.3rem;
   top: 50%;
+  z-index: 99;
   -webkit-transform: translateY(-50%);
      -moz-transform: translateY(-50%);
       -ms-transform: translateY(-50%);
@@ -734,6 +735,7 @@ label.error {
 
 .l-wrap{
 	margin-top: 2.5rem;
+	padding: 0 .6rem;
 }
 .loading-item {
   height: 0.8rem;
@@ -878,6 +880,7 @@ label.error {
   position: absolute;
   left: 1rem;
   top: 0.03rem;
+  z-index: 9;
   width: 100%;
 }
 
@@ -1060,6 +1063,8 @@ label.error {
 	font-size: 0.32rem;
 	line-height: .8rem;
 }
+
+
 .am-modal-mask {
   position: fixed;
   top: 0;
@@ -1245,4 +1250,53 @@ label.error {
 }
 .lbBack-item .wrap .time{
 	margin-bottom: .1rem;
+}
+
+.account-wrap{
+	width: 100%;
+	background-color: #fff;
+	overflow: hidden;
+	padding: .3rem;
+}
+.account-wrap .amount-tip{
+	font-size: .28rem;
+	color: #999;
+	margin-bottom: .1rem;
+}
+.account-wrap .remain-amount{
+	font-size: .32rem;
+}
+.account-wrap .account-btnWrap{
+	margin-top: .2rem;
+}
+.account-wrap .account-btnWrap .am-button{
+    height: 0.56rem;
+    line-height: 0.56rem;
+	padding: 0 .3rem;
+	font-size: .26rem;
+}
+.account-list{
+	width: 100%;
+	background-color: #fff;
+}
+.account-list .account-item{
+	padding: .2rem .3rem;
+}
+.account-list .account-item .account-bizType{
+	font-size: .28rem;
+}
+.account-list .account-item .account-date{
+	font-size: .26rem;
+	color: #999;
+}
+.account-list .account-item .account-item-transAmount{
+	margin: .1rem 0;
+}
+.account-list .account-item .account-transAmount{
+	font-size: .32rem;
+	color: #FF4332;
+}
+.account-list .account-item .account-bizNote{
+	font-size: .26rem;
+	color: #999;
 }

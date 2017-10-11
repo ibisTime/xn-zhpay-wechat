@@ -43,10 +43,10 @@ define([
 				if(data.status == 1){
 					$("#MonthlyBenefits").html('已完结')
 				}else{
-					$("#MonthlyBenefits").html(data.bdBackCount+'/'+data.lbTemplate.bdTotalCount)
+					$("#MonthlyBenefits").html(data.bdBackCount+'/'+data.bdTotalCount)
 				}
-				$("#dlb").html(data.dlbBackCount+'/'+data.lbTemplate.dlbTotalCount)
-				$("#xlb").html(data.xlbBackCount+'/'+data.lbTemplate.xlbTotalCount)
+				$("#dlb").html(data.dlbBackCount+'/'+data.dlbTotalCount)
+				$("#xlb").html(data.xlbBackCount+'/'+data.xlbTotalCount)
 			}else{
 				base.showMsg(res.msg)
 			}
@@ -68,8 +68,12 @@ define([
 	            }
 	            if(data.list.length) {
 	                $("#content").append(buildHtml(data.list));
-	            } else {
-	                $("#content").html('<li class="no-data">暂无记录</li>')
+                    isEnd && $("#content").append('<div class="no-data">已经全部加载完毕</div>')
+                    config.start++;
+	            } else if(config.start == 1) {
+                    $("#content").html('<div class="no-data">暂无记录</div>')
+                } else {
+	                $("#content").appendTo('<div class="no-data">已经全部加载完毕</div>')
 	            }
 	            canScrolling = true;
 	        }else{
@@ -109,6 +113,14 @@ define([
 	
 	function addListener(){
 		
+		//下拉加载
+        $(window).off("scroll").on("scroll", function() {
+            if (canScrolling && !isEnd && ($(document).height() - $(window).height() - 10 <= $(document).scrollTop())) {
+                canScrolling = false;
+                base.showLoading();
+                getPageLbBack();
+            }
+        });
 	}
 	
 });

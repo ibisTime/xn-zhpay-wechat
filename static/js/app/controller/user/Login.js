@@ -22,23 +22,37 @@ define([
         })
         
         $("#lbtn-sub").click(function(){
+        	
+        	var loginName = $("#l-tel").val();
+        	var loginPwd = $("#l-pwd").val();
+        	
         	var param = {
-        		loginName: $("#l-tel").val(),
-        		loginPwd: $("#l-pwd").val(),
+        		loginName: loginName,
+        		loginPwd: loginPwd,
         		kind: 'f1',
         		companyCode: COMPANY_CODE,
         		systemCode: SYSTEM_CODE
         	}
-        	base.getUserLogin(param).then(function(res){
-                base.showLoading()
-                if (res.success) {
-                	base.hideLoading()
-                	location.href = '../user/user.html'
-                }else{
-                	base.hideLoading();
-                	base.showMsg(res.msg)
-                }
-        	});
+        	
+        	
+        	if(loginName == null || loginName == ""){
+        		base.showMsg("请输入手机号码");
+        	}else if(loginPwd == null || loginPwd == ""){
+        		base.showMsg("请输入密码");
+        	}else{
+        		base.getUserLogin(param).then(function(res){
+	                base.showLoading()
+	                if (res.success) {
+	                	base.hideLoading()
+	                	$("#l-tel").val('')
+	                	$("#l-pwd").val('')
+	                	location.href = '../user/user.html'
+	                }else{
+	                	base.hideLoading();
+	                	base.showMsg(res.msg)
+	                }
+	        	});
+        	}
         })
     }
 });

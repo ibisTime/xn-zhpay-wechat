@@ -28,7 +28,7 @@ define([
         	if(res.success){
         		var data = res.data
             	$("#rechargeTimes").text(data.USER_MONTIMES);
-                $("#times").text(data.USER_QXFL);
+                $("#times").text(data.USER_QXBS);
                 $("#maxAmount").text(data.USER_QXDBZDJE);
                 rate = +data.USER_QXFL;
                 $("#qxfl").text(data.USER_QXFL*100)
