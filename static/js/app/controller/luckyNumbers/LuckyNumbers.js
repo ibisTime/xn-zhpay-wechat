@@ -17,7 +17,7 @@ define([
 	
 	function getLuckyNumbers(){
 		base.showLoading()
-		return Ajax.get('808507',config).then(function(res){
+		return Ajax.get('808507',config, false).then(function(res){
 			base.hideLoading()
 			if(res.success){
 				var data = res.data;
@@ -47,7 +47,7 @@ define([
     		var status = item.status==1?'red':'blue';
 
             html += '<div class="luckyNumbers-item '+status+'">'
-                 + '<a href="./luckyNumber-detail.html?code='+item.code+'" class="con">'+item.number+'</a></div>';
+                 + '<a href="./luckyNumber-detail.html?code='+item.code+'&timestamp=' + new Date().getTime()+'" class="con">'+item.number+'</a></div>';
         });
         
         return html;

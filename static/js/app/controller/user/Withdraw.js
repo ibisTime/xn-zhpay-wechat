@@ -16,6 +16,9 @@ define([
         ).then(function() {
             base.hideLoading();
             addListener();
+        },function() {
+            base.hideLoading();
+            addListener();
         });
     }
     // 获取提现规则
@@ -59,19 +62,7 @@ define([
     }
     // 用户还未绑定银行卡的处理方式
     function doNoBankCard() {
-        var _payCardNo = $("#payCardNo"),
-            _noCard = $("#noCard");
-        addOrEditBankCard.addCont({
-            userId: base.getUserId(),
-            success: function(bankcardNumber, bankName) {
-                _payCardNo.html(`<option data-name="${bankName}" value="${bankcardNumber}">${bankcardNumber}</option>`)
-                    .valid();
-                _noCard.addClass("hidden");
-            }
-        });
-        _noCard.removeClass("hidden").on("click", function() {
-            addOrEditBankCard.showCont();
-        });
+        $("#noCard").removeClass("hidden");
     }
     // 获取用户账户
     function getAccount() {
@@ -79,7 +70,7 @@ define([
             .then(function(res) {
             	if(res.success){
             		var data = res.data
-		            data.forEach((account) => {
+		            data.forEach(function(account) {
 		                if(account.currency == currencyType){
 		                    $("#accountNumber").val(account.accountNumber);
 		                    remainAmount = +account.amount;
@@ -92,8 +83,28 @@ define([
             });
     }
     function addListener() {
-        var _withDrawForm = $("#withDrawForm");
-        _withDrawForm.validate({
+    	addOrEditBankCard.addCont({
+            userId: base.getUserId(),
+            success: function(bankcardNumber, bankName) {
+                $("#payCardNo").html('<option selected data-name="'+bankName+'" value="'+bankcardNumber+'">'+bankcardNumber+'</option>');
+                $("#noCard").addClass("hidden");
+            }
+        });
+        
+        $("#noCard").on("click", function() {
+            addOrEditBankCard.showCont();
+        });
+		
+        $.validator.addMethod("ltR", function(value, element) {
+            value = +value;
+            if(value * 1000 > remainAmount) {
+                return false;
+            }
+            return true;
+        }, '必须小于可用余额');
+        
+        var withDrawForm = $("#withDrawForm");
+        withDrawForm.validate({
             'rules': {
                 amount: {
                     required: true,
@@ -114,9 +125,9 @@ define([
         });
         // 提现
         $("#submitBtn").click(function() {
-            if (_withDrawForm.valid()) {
+            if (withDrawForm.valid()) {
                 base.showLoading();
-                doWithDraw(_withDrawForm.serializeObject());
+                doWithDraw(withDrawForm.serializeObject());
             }
         });
         // 计算手续费
@@ -127,16 +138,8 @@ define([
             }
             $("#fee").text(base.formatMoney(amount) + "元");
         });
-        $.validator.addMethod("ltR", function(value, element) {
-            value = +value;
-            if(value * 1000 > remainAmount) {
-                return false;
-            }
-            return true;
-        }, '必须小于可用余额');
-        
         $("#withdrawRecord").click(function(){
-        	location.href='./withdraw-record.html?accountNumber='+$("#accountNumber").val()
+        	location.href='./withdraw-record.html?accountNumber='+$("#accountNumber").val()+'&timestamp=' + new Date().getTime()
         })
         
     }
@@ -154,7 +157,7 @@ define([
 	            base.showMsg("申请提交成功");
 	            setTimeout(function() {
 	            	
-	          		location.href='./user.html';
+	          		location.href='./user.html?timestamp=' + new Date().getTime();
 	            	
 	            }, 700);
         	}else{

@@ -23,7 +23,8 @@ define([
     	$.when(
     		getUserInfo(),
     		getAccount(),
-    		getPageLbBack()
+    		getPageLbBack(),
+    		getLBLMQQBBAMOUNT()
     	).then(function(){
     		
     		base.hideLoading()
@@ -45,13 +46,32 @@ define([
     	})
     }
     
+    //获取联盟券购买钱包币金额
+    function getLBLMQQBBAMOUNT(){
+    	return Ajax.get('808915',{
+    		start:1,
+    		limit:50,
+    		type:"10",
+    		companyCode: COMPANY_CODE,
+    		systemCode: SYSTEM_CODE,
+    		ckey:"LB_LMQ_QBB_AMOUNT",
+    	}).then(function (res){
+            	if(res.success){
+            		var data = res.data
+            		$(".LB_LMQ_QBB_AMOUNT").html(data.list[0].cvalue)
+		        }else{
+	        		base.showMsg(res.msg)
+	        	}
+            });
+    }
+    
     //获取用户账户
     function getAccount() {
         return Ajax.get('802503')
             .then(function (res){
             	if(res.success){
             		var data = res.data
-		            data.forEach((account) => {
+		            data.forEach(function(account) {
 		                if(account.currency == 'LBB'){
 		                    $("#LBBAmount").text(base.formatMoney(account.amount));
 		                }
@@ -142,7 +162,7 @@ define([
 			base.showLoading('退出中...')
 			base.logout();
 			setTimeout(function(){
-				location.replace('./login.html')
+				location.replace('./login.html?timestamp=' + new Date().getTime())
 			},500)
 		})
 		
@@ -159,6 +179,16 @@ define([
 		//弹窗确认
 		$(".dialog .confim").click(function(){
 			getBuyQBB();
+		})
+		
+		//余额
+		$("#account").click(function(){
+			location.href='./account.html?timestamp=' + new Date().getTime()
+		})
+		
+		//幸运数字
+		$("#luckNumbers").click(function(){
+			location.href='../luckyNumbers/luckyNumbers.html?timestamp=' + new Date().getTime()
 		})
 		
 	}

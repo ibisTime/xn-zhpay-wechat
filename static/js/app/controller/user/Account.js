@@ -9,7 +9,7 @@ define([
 		companyCode: COMPANY_CODE,
 		systemCode: SYSTEM_CODE,
     }, isEnd = false, canScrolling = false;
-    var tradepwdFlag = false, mobile,
+    var tradepwdFlag = 0, mobile,
     	distRes = [];
 
     init();
@@ -20,8 +20,13 @@ define([
         	getDictList(),
             getAccount(),
             getUserInfo()
-        ).then(base.hideLoading);
-        addListener();
+        ).then(function(){
+        	addListener();
+        	base.hideLoading();
+        },function(){
+        	addListener();
+        	base.hideLoading();
+        });
     }
     
     //获取bizType 数据字典
@@ -40,7 +45,7 @@ define([
             .then(function (res){
             	if(res.success){
             		var data = res.data
-		            data.forEach((account) => {
+		            data.forEach(function(account) {
 		                if(account.currency == 'LBB'){
 		                    $("#amount").text(base.formatMoney(account.amount));
                         	config.accountNumber = account.accountNumber;
@@ -92,7 +97,7 @@ define([
     }
     function buildHtml(data) {
         var html = "";
-        data.forEach((item) => {
+        data.forEach(function(item) {
             var transAmount = base.formatMoney(item.transAmount);
             var createDatetime = base.formatDate(item.createDatetime, "yyyy年MM月dd日 hh:mm:ss");
 			var bizType = dictArray(item.bizType,distRes);
@@ -130,14 +135,14 @@ define([
         });
         setTradePwd.addCont({
 			mobile:mobile,
-			successUrl:'./withdraw.html'
+			successUrl:'./withdraw.html?timestamp=' + new Date().getTime()
 		})
 		//提现
 		$("#withdraw").click(function(){
-			if(tradepwdFlag==0&&!tradepwdFlag){
+			if(tradepwdFlag==0){
 				setTradePwd.showCont()
 			}else{
-				location.href='./withdraw.html'
+				location.href='./withdraw.html?timestamp=' + new Date().getTime();
 			}
 		})
     }

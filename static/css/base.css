@@ -1774,6 +1774,8 @@ pl23{
           flex: 1;
   font-size: 0.3rem;
   color: #333;
+  z-index: 9;
+  background-color: #fff;
 }
 
 .form-wrapper .form-item .input-item:disabled {
@@ -1787,7 +1789,9 @@ pl23{
 
 .form-wrapper .form-item .item-button {
   width: 2rem;
-  font-size: .32rem;
+  font-size: .28rem;
+  position: relative;
+  z-index: 11;
 }
 
 .form-wrapper .form-item input[type="number"],
@@ -1797,6 +1801,13 @@ pl23{
   color: #333;
 }
 .right-left-cont .primary-wrap{
-	padding: 1rem 0;
+	padding: 1rem .3rem;
 }
-
+.right-left-cont .primary-wrap .am-button{
+    height: 0.7rem;
+    line-height: 0.7rem;
+}
+.form-wrapper .form-item .item-button.valid{
+	background-color: #f0f0f0;
+	color: #999;
+}

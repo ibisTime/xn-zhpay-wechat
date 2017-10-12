@@ -40,13 +40,14 @@ define([
         	}else if(loginPwd == null || loginPwd == ""){
         		base.showMsg("请输入密码");
         	}else{
-        		base.getUserLogin(param).then(function(res){
+        		Ajax.get("805043", param).then(function(res){
 	                base.showLoading()
 	                if (res.success) {
 	                	base.hideLoading()
 	                	$("#l-tel").val('')
 	                	$("#l-pwd").val('')
-	                	location.href = '../user/user.html'
+	                	base.setSessionUser(res.data)
+	                	location.href = '../user/user.html?timestamp=' + new Date().getTime();
 	                }else{
 	                	base.hideLoading();
 	                	base.showMsg(res.msg)

@@ -13,7 +13,7 @@
             <input type="hidden" id="accountNumber" name="accountNumber" />
             <div class="withdraw-list">
                 <div class="withdraw-item am-flexbox am-flexbox-justify-between">
-                    <div class="am-flexbox am-flexbox-item re">
+                    <div class="am-flexbox am-flexbox-item re over-hide">
                         <span>银行卡</span>
                         <select class="bank-select am-flexbox-item" name="payCardNo" id="payCardNo"></select>
                         <div class="bank-select am-flexbox-item hidden over-select" id="noCard">点击添加银行卡</div>
@@ -25,9 +25,9 @@
             <div class="recharge-top">
                 <div class="title">提现金额</div>
                 <div class="amount">
-                    <div class="am-flexbox re">
-                        <span>¥</span>
-                        <input type="tel" id="amount" name="amount" placeholder="请输入提现金额">
+                    <div class="re">
+                        <samp class="fh">¥</samp>
+                        <input type="tel" id="amount" name="amount" placeholder="请输入提现金额" />
                     </div>
                 </div>
                 <div class="remain">可提现余额<span id="remainAmount">0.00</span></div>
@@ -45,7 +45,7 @@
         </form>
         <div class="withdraw-txt" id="withdrawRecord">提现记录</div>
         <div class="recharge-btn">
-            <button class="am-button am-button-primary" id="submitBtn">提现</button>
+            <input class="am-button am-button-primary" id="submitBtn" type="button" value="提现"/>
         </div>
         <div class="withdraw-rules">
             <p>提现规则：</p>

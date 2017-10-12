@@ -180,8 +180,9 @@ define([
         hasCont: function(){
             return !!$("#addOrEditBankCardContainer").length;
         },
-        showCont: function (option = {}){
+        showCont: function (option){
             if(this.hasCont()){
+            	option = option || {};
                 if(option.code) {
                     defaultOpt.code = option.code;
                     $("#addOrEditBankCardContainer").find(".right-left-cont-title-name").text("修改银行卡");

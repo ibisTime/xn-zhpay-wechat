@@ -359,17 +359,6 @@ define([
         isLogin: function() {
             return !!sessionStorage.getItem("user");
         },
-        getUserLogin: function(param,refresh) {
-            return Ajax.get("805043", param, !refresh)
-                .then(function(res) {
-                    if (res.success) {
-                        Base.setSessionUser(res.data);
-                    }
-                    return res;
-                }, function(res) {
-                    return res;
-                });
-        },
         getUserId: function() {
             return sessionStorage.getItem("user") || "";
         },

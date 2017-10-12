@@ -117,18 +117,18 @@ define([
                     clearSessionUser();
                 	showMsg("登录超时");
                 	setTimeout(function() {
-                        location.replace("../user/login.html");
+                        location.replace("../user/login.html?timestamp=" + new Date().getTime());
                     }, 800);
                 }
                 if(res.errorInfo == 'token不能为空'){
                 	clearSessionUser();
                 	setTimeout(function() {
-                        location.replace("../user/login.html");
+                        location.replace("../user/login.html?timestamp=" + new Date().getTime());
                     }, 800);
                 }
                 var result = {};
                 res.errorCode == "0" ? (result.success = true, result.data = res.data) :
-                    (result.success = false, result.msg = res.errorInfo== 'token不能为空'? '登录失效' : res.errorInfo);
+                    (result.success = false, result.msg = res.errorInfo!= 'token不能为空'? res.errorInfo : '登录失效'+code);
                 return result;
             }, function(obj, error, msg) {
                 console.log(msg);
