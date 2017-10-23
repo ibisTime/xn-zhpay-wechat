@@ -17,6 +17,7 @@ samp,i,b,input{
 .ptb15r{ padding-top: .15rem; padding-bottom: .15rem;}
 .pb1r{ padding-bottom: .1rem;}
 .pt100r{ padding-bottom: 1rem;}
+.mr30r{ margin-right: .3rem;}
 .pl{ padding-left: .6rem;}
 .bg_fff{ background-color: #fff;}
 .bg_f0{ background-color: #f0f0f0;}
@@ -917,12 +918,12 @@ label.error {
   line-height: 1.7;
   color: #FE4332;
 }
-.withdraw-wrapper .recharge-btn {
+.recharge-btn {
   margin-top: .8rem;
   padding: 0 0.3rem;
 }
 
-.withdraw-wrapper .recharge-btn .am-button {
+.recharge-btn .am-button {
   width: 100%;
   height: 0.9rem;
   line-height: 0.9rem;
@@ -1313,4 +1314,41 @@ label.error {
 .account-list .account-item .account-bizNote{
 	font-size: .26rem;
 	color: #999;
+}
+.rememberInfo{
+	font-size: .26rem;
+	text-align: right;
+}
+.rememberInfo samp{
+	display: inline-block;
+	line-height: .3rem;
+	color: #fff;
+}
+.rememberInfo i{
+	display: inline-block;
+	width: .3rem;
+	height: .3rem;
+	border-radius: .04rem;
+	border: 1px solid #fff;
+	margin-left: .15rem;
+	position: relative;
+	top: .08rem;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: 90%;
+}
+.l-wrap .rbtn-sub{
+    margin-top: 1.2rem;
+}
+.rememberInfo.active i{
+	background-image: url('../images/勾.png');
+}
+.transferAccounts-wrapper .form-item .item-title{
+    width: 2rem;
+}
+.transferAccounts-wrapper .remain{
+    padding: 0rem .3rem .2rem;
+    font-size: 0.24rem;
+    color: #FE4332;
+    line-height: 1;
 }

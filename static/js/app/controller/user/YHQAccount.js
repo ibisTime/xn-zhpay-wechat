@@ -9,9 +9,7 @@ define([
 		companyCode: COMPANY_CODE,
 		systemCode: SYSTEM_CODE,
     }, isEnd = false, canScrolling = false;
-    var tradepwdFlag = 0, mobile,
-    	successUrl,
-    	distRes = [];
+    var distRes = [];
 
     init();
 
@@ -19,8 +17,7 @@ define([
         base.showLoading();
         $.when(
         	getDictList(),
-            getAccount(),
-            getUserInfo()
+            getAccount()
         ).then(function(){
         	addListener();
         	base.hideLoading();
@@ -47,7 +44,7 @@ define([
             	if(res.success){
             		var data = res.data
 		            data.forEach(function(account) {
-		                if(account.currency == 'LBB'){
+		                if(account.currency == 'YHQ'){
 		                    $("#amount").text(base.formatMoney(account.amount));
                         	config.accountNumber = account.accountNumber;
 		                }
@@ -58,17 +55,6 @@ define([
 	        		base.showMsg(res.msg)
 	        	}
             });
-    }
-    //获取用户信息
-    function getUserInfo(){
-    	return Ajax.get('805056').then(function(res){
-    		if(res.success){
-    			mobile = res.data.mobile
-    			tradepwdFlag = res.data.tradepwdFlag
-    		}else{
-    			base.showMsg(res.msg)
-    		}
-    	})
     }
     
     // 分页查询流水
@@ -134,28 +120,5 @@ define([
                 getPageFlow();
             }
         });
-        setTradePwd.addCont({
-			mobile:mobile
-		})
-		//提现
-		$("#withdraw").click(function(){
-			if(tradepwdFlag==0){
-				setTradePwd.showCont({
-					successUrl: './withdraw.html?timestamp=' + new Date().getTime()
-				})
-			}else{
-				location.href='./withdraw.html?timestamp=' + new Date().getTime();
-			}
-		})
-		//转账
-		$("#transferAccounts").click(function(){
-			if(tradepwdFlag==0){
-				setTradePwd.showCont({
-					successUrl: './transferAccounts.html?timestamp=' + new Date().getTime()
-				})
-			}else{
-				location.href='./transferAccounts.html?timestamp=' + new Date().getTime();
-			}
-		})
     }
 });

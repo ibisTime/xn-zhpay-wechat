@@ -1,32 +1,32 @@
 define([], function() {
-	var ret;
-	
-	ret.set = function(name, value) {
-		var Days = 30;
-		var exp = new Date();
-		exp.setTime(exp.getTime() + Days * 24 * 60 * 60 * 1000);
-		document.cookie = name + "=" + escape(value) + ";expires="
-				+ exp.toGMTString() + ";";
-	};
-	
-	ret.get = function(name) {
-		var arr, reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");
+	var cookieUtil = {
+		set: function(name, value, expires) {
+			var expr = "";
+	        if(!expires){
+	            var Days = 30;
+	    		var exp = new Date();
+	    		exp.setTime(exp.getTime() + Days * 24 * 60 * 60 * 1000);
+	            expr = ";expires=" + exp.toGMTString()
+	        }
+			document.cookie = name + "=" + escape(value) + expr + ";path=/;";
+		},
 
-		if (arr = document.cookie.match(reg))
+		get: function(name) {
+			var arr, reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");
+			if (arr = document.cookie.match(reg))
+				return unescape(arr[2]);
+			else
+				return null;
+		},
 
-			return unescape(arr[2]);
-		else
-			return null;
+		del: function(name) {
+			var exp = new Date();
+			exp.setTime(exp.getTime() - 1);
+			var cval = cookieUtil.get(name);
+			if (cval != null)
+				document.cookie = name + "=" + cval + ";expires="
+						+ exp.toGMTString() + ";path=/;";
+		}
 	};
-	
-	ret.del = function(name) {
-		var exp = new Date();
-		exp.setTime(exp.getTime() - 1);
-		var cval = $.getCookie(name);
-		if (cval != null)
-			document.cookie = name + "=" + cval + ";expires="
-					+ exp.toGMTString();
-	}
-	
-	return ret;
+	return cookieUtil;
 });

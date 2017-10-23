@@ -3,7 +3,7 @@
 
 <head>
     <link rel="import" href="../head.html?__inline">
-    <title>余额</title>
+    <title>优惠券</title>
     <!--SCRIPT_PLACEHOLDER-->
 </head>
 
@@ -13,16 +13,12 @@
             <p class="amount-tip">余额</p>
             <p class="remain-amount" id="amount">0.00</p>
         </div>
-        <div class="fr account-btnWrap">
-            <button id="transferAccounts" class="am-button am-button-red fl mr30r">转账</button>
-            <button id="withdraw" class="am-button am-button-red fl">提现</button>
-        </div>
     </div>
     <div class="am-whitespace-sm"></div>
     <div class="account-list" id="content"></div>
     <link rel="import" href="../footer.html?__inline">
     <script>
-        require(['app/controller/user/Account']);
+        require(['app/controller/user/YHQAccount']);
     </script>
 </body>
 

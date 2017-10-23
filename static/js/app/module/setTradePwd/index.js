@@ -109,9 +109,10 @@ define([
 				return false
 			return true;
 		},
-		showCont: function(mobile) {
+		showCont: function(showParams) {
 			if(this.hasCont()) {
-				defaultOpt.mobile = mobile || defaultOpt.mobile;
+				defaultOpt.mobile = showParams.mobile || defaultOpt.mobile;
+				defaultOpt.successUrl = showParams.successUrl || defaultOpt.successUrl;
 				$("#setTradePwdMobile").val(defaultOpt.mobile);
 				$("#modelMobile").val(defaultOpt.mobile);
 				var wrap = $("#setTradePwdWrap");

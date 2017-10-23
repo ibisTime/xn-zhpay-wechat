@@ -157,12 +157,12 @@ define([
 	            base.showMsg("申请提交成功");
 	            setTimeout(function() {
 	            	
-	          		location.href='./user.html?timestamp=' + new Date().getTime();
+	          		location.replace('./user.html?timestamp=' + new Date().getTime())
 	            	
 	            }, 700);
         	}else{
         		base.hideLoading();
-        		base.showMsg(res.msg,10000)
+        		base.showMsg(res.msg,1000)
         	}
             
         });

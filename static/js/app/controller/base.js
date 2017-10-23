@@ -2,8 +2,9 @@ define([
     'jquery',
     'app/util/ajax',
     'app/util/dialog',
+    'app/util/cookie',
     'app/module/loading/loading'
-], function($, Ajax, dialog, loading) {
+], function($, Ajax, dialog, CookieUtil, loading) {
 
     if (Number.prototype.toFixed) {
         var ori_toFixed = Number.prototype.toFixed;

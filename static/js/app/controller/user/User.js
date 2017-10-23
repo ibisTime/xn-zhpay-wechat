@@ -48,17 +48,12 @@ define([
     
     //获取联盟券购买钱包币金额
     function getLBLMQQBBAMOUNT(){
-    	return Ajax.get('808915',{
-    		start:1,
-    		limit:50,
-    		type:"10",
-    		companyCode: COMPANY_CODE,
-    		systemCode: SYSTEM_CODE,
-    		ckey:"LB_LMQ_QBB_AMOUNT",
-    	}).then(function (res){
+    	return Ajax.get('808501').then(function (res){
             	if(res.success){
             		var data = res.data
-            		$(".LB_LMQ_QBB_AMOUNT").html(data.list[0].cvalue)
+            		$(".buyQBB-LMQ").html(data.lmqAmount)
+            		$(".buyQBB-YHQ").html(data.yhqAmount)
+            		$(".buyQBB-QBB").html(data.qbbAmount)
 		        }else{
 	        		base.showMsg(res.msg)
 	        	}
@@ -74,6 +69,8 @@ define([
 		            data.forEach(function(account) {
 		                if(account.currency == 'LBB'){
 		                    $("#LBBAmount").text(base.formatMoney(account.amount));
+		                }else if(account.currency == 'YHQ'){
+		                    $("#YHQAmount").text(base.formatMoney(account.amount));
 		                }
 		            });
 		        }else{
@@ -184,6 +181,11 @@ define([
 		//余额
 		$("#account").click(function(){
 			location.href='./account.html?timestamp=' + new Date().getTime()
+		})
+		
+		//优惠券
+		$("#YHQaccount").click(function(){
+			location.href='./YHQ-account.html?timestamp=' + new Date().getTime()
 		})
 		
 		//幸运数字
