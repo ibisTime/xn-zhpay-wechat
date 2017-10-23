@@ -44,7 +44,28 @@
 	<div class="lbBack-list" id="content">
 	</div>
 	
-	<!--弹窗-->
+	<!--是否使用优惠券弹窗-->
+    <div class="hidden dialog" id="isYhqDialog">
+        <div class="am-modal-mask"></div>
+        <div class="am-modal-wrap">
+            <div role="document" class="am-modal">
+                <div class="am-modal-content">
+                    <div class="am-modal-header">
+                    	<div class="am-modal-close"></div>
+                    </div>
+                    <div class="am-modal-body">
+                    	<div class="buy-dialog-content tc">是否使用优惠券？</div>
+                    </div>
+                    <div class="am-modal-footer">
+                    	<div class="am-button am-button-cancel cancel">否</div>
+                    	<div class="am-button am-button-red confim">是</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+	
+	<!--兑换弹窗-->
     <div class="hidden dialog" id="buyQBBDialog">
         <div class="am-modal-mask"></div>
         <div class="am-modal-wrap">
@@ -54,7 +75,7 @@
                     	<p>兑换</p>
                     </div>
                     <div class="am-modal-body">
-                    	<div class="buy-dialog-content">是否使用<samp class="buyQBB-LMQ"></samp>联盟券+<samp class="buyQBB-YHQ"></samp>优惠券兑换<samp class="buyQBB-QBB"></samp>钱包币？</div>
+                    	<div class="buy-dialog-content">是否使用<samp class="buyQBB-LMQ"></samp>联盟券<span id="isYhq" class="hidden over-hide">+<samp class="buyQBB-YHQ"></samp>优惠券兑换</span><samp class="buyQBB-QBB"></samp>钱包币？</div>
                     </div>
                     <div class="am-modal-footer">
                     	<div class="am-button am-button-cancel cancel">取消</div>

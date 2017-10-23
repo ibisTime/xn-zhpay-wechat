@@ -15,6 +15,7 @@ define([
 	        "2": ['小礼包'],
 	        "3": ['保底礼包'],
 	    };
+	var isYhqValue = 1;
 	
     init();
     
@@ -23,8 +24,7 @@ define([
     	$.when(
     		getUserInfo(),
     		getAccount(),
-    		getPageLbBack(),
-    		getLBLMQQBBAMOUNT()
+    		getPageLbBack()
     	).then(function(){
     		
     		base.hideLoading()
@@ -46,20 +46,6 @@ define([
     	})
     }
     
-    //获取联盟券购买钱包币金额
-    function getLBLMQQBBAMOUNT(){
-    	return Ajax.get('808501').then(function (res){
-            	if(res.success){
-            		var data = res.data
-            		$(".buyQBB-LMQ").html(data.lmqAmount)
-            		$(".buyQBB-YHQ").html(data.yhqAmount)
-            		$(".buyQBB-QBB").html(data.qbbAmount)
-		        }else{
-	        		base.showMsg(res.msg)
-	        	}
-            });
-    }
-    
     //获取用户账户
     function getAccount() {
         return Ajax.get('802503')
@@ -79,10 +65,35 @@ define([
             });
     }
     
+    //获取联盟券购买钱包币金额
+    function getLBLMQQBBAMOUNT(){
+    	return Ajax.get('808501',{
+    		isYhq:isYhqValue
+    	},false).then(function (res){
+            	if(res.success){
+            		var data = res.data
+            		if(isYhqValue==1){
+            			$("#isYhq").removeClass('hidden')
+	            		$(".buyQBB-LMQ").html(data.lmqAmount)
+	            		$(".buyQBB-YHQ").html(data.yhqAmount)
+	            		$(".buyQBB-QBB").html(data.qbbAmount)
+            		}else{
+            			$("#isYhq").addClass('hidden')
+	            		$(".buyQBB-LMQ").html(data.lmqAmount)
+	            		$(".buyQBB-QBB").html(data.qbbAmount)
+            		}
+		        }else{
+	        		base.showMsg(res.msg)
+	        	}
+            });
+    }
+    
     //购买钱包币
     function getBuyQBB(){
     	base.showLoading()
-    	return Ajax.get('808500',{},false).then(function(res){
+    	return Ajax.get('808500',{
+    		isYhq:isYhqValue
+    	},false).then(function(res){
     		base.hideLoading()
     		if(res.success){
 				$("#buyQBBDialog").addClass('hidden')
@@ -165,16 +176,44 @@ define([
 		
 		//购买钱包币
 		$("#buyQBB").click(function(){
-			$("#buyQBBDialog").removeClass('hidden')
+			$("#isYhqDialog").removeClass('hidden')
 		})
 		
-		//弹窗取消
-		$(".dialog .cancel").click(function(){
+		//是否优惠券-弹窗否
+		$("#isYhqDialog .cancel").click(function(){
+			isYhqValue = 0;
+			
+			base.showLoading()
+			getLBLMQQBBAMOUNT().then(function(){
+				base.hideLoading()
+				$("#isYhqDialog").addClass('hidden')
+				$("#buyQBBDialog").removeClass('hidden')
+			})
+		})
+		//是否优惠券-弹窗是
+		$("#isYhqDialog .confim").click(function(){
+			isYhqValue = 1;
+			
+			base.showLoading()
+			getLBLMQQBBAMOUNT().then(function(){
+				base.hideLoading()
+				$("#isYhqDialog").addClass('hidden')
+				$("#buyQBBDialog").removeClass('hidden')
+			})
+		})
+		
+		//兑换-弹窗取消
+		$(".am-modal .am-modal-header .am-modal-close").click(function(){
+			$(".dialog").addClass('hidden')
+		})
+		
+		//兑换-弹窗取消
+		$("#buyQBBDialog .cancel").click(function(){
 			$("#buyQBBDialog").addClass('hidden')
 		})
 		
-		//弹窗确认
-		$(".dialog .confim").click(function(){
+		//兑换-弹窗确认
+		$("#buyQBBDialog .confim").click(function(){
 			getBuyQBB();
 		})
 		

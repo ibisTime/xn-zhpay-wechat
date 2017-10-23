@@ -1143,10 +1143,25 @@ label.error {
 .am-modal .am-modal-header {
   padding: .3rem .3rem .2rem;
   font-size: .3rem;
+  min-height: .4rem;
+  position: relative;
+}
+
+.am-modal .am-modal-header .am-modal-close{
+	width: .5rem;
+	height: .5rem;
+	position: absolute;
+	top: .2rem;
+	right: .2rem;
+	background-image: url('../images/关闭.png');
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: .3rem;
 }
 
 .am-modal .am-modal-body {
   font-size: .28rem;
+  width: 100%;
   height: 100%;
   max-height: 4.6rem;
   overflow-y: scroll;
