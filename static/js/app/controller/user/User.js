@@ -74,13 +74,13 @@ define([
             		var data = res.data
             		if(isYhqValue==1){
             			$("#isYhq").removeClass('hidden')
-	            		$(".buyQBB-LMQ").html(data.lmqAmount)
-	            		$(".buyQBB-YHQ").html(data.yhqAmount)
-	            		$(".buyQBB-QBB").html(data.qbbAmount)
+	            		$(".buyQBB-LMQ").html(base.formatMoney(data.lmqAmount))
+	            		$(".buyQBB-YHQ").html(base.formatMoney(data.yhqAmount))
+	            		$(".buyQBB-QBB").html(base.formatMoney(data.qbbAmount))
             		}else{
             			$("#isYhq").addClass('hidden')
-	            		$(".buyQBB-LMQ").html(data.lmqAmount)
-	            		$(".buyQBB-QBB").html(data.qbbAmount)
+	            		$(".buyQBB-LMQ").html(base.formatMoney(data.lmqAmount))
+	            		$(".buyQBB-QBB").html(base.formatMoney(data.qbbAmount))
             		}
 		        }else{
 	        		base.showMsg(res.msg)
